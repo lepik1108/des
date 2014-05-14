@@ -1,26 +1,31 @@
-import ball
+from ball import *
 import matplotlib.pyplot as plt
 
-class Plot(object):
-    def __init__(self):
-        self.poly = []
-        self.fig, self.ax = plt.subplots()
-        self.ax.axis([0, 10, 0, 10])
-        self.fig.canvas.mpl_connect('button_press_event', self.on_click)
+import numpy as np
+import matplotlib.pyplot as plt
+import time,math
+	
+class Engine:
+	def __init__(self):
+		plt.ion()
+		plt.ylim((-100,100))
+		plt.xlim((-1,1))
+		self.graphic, = plt.plot([], [], 'ro')
+		self.is_stoped = False
+		
+	def start(self, obj):
+		while(False == self.is_stoped):
+			obj.recalc()
+			X,Y = obj.array()
+			time.sleep(0.01)
+			self.graphic.set_xdata(X)
+			self.graphic.set_ydata(Y)
+			plt.draw()
+			
+	def stop():
+		self.is_stoped = True
 
-        plt.show()
-
-    def on_click(self, event):
-        if event.button == 1:
-            self.poly.append((event.xdata, event.ydata))
-        elif event.button == 3:
-            self.draw_poly()
-
-    def draw_poly(self):
-        self.ax.clear()
-        self.ax.axis([0, 10, 0, 10])
-        self.ax.fill(*zip(*self.poly))
-        self.poly = []
-        self.fig.canvas.draw()
-
-Plot()
+e = Engine()
+obj = Bal(0,10)
+obj.setEngine(e)
+e.start(obj)

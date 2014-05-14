@@ -25,20 +25,31 @@ class Bal(OBJ):
 		self.k2_ = k2
 		self.mass_ = mass
 		self.n_ = n
-		self.i = 0
+		self.i_ = 0
+		self.dt_ = dt
+		print ("Start x y = (",x,",",y,")")
+		print ("Start velocity = (", velocity)
+		print ("Start mass = (", mass)
+		print ("g = (", g)
+		print ("dt = (", dt)
+		
+		
 		
 	def array(self):
-		X = [self.x]
-		Y = [self.x]
+		X = [self.x_]
+		Y = [self.x_]
 		return X,Y
 		
 	def stop(self):
-		exit()
+		self.i_ = 0 
 			
 	def recalc(self):
 		print self.i_, self.velocity_
 		self.i_ += 1
-		self.velocity_ = self.velocity_ + (self.mass_ * self.g_ - self.velocity_ - self.velocity_**2)/self.mass_
+		new_v = (self.mass_ * self.g_ - self.velocity_ - self.velocity_**2)
+		new_v = new_v / self.mass_
+		new_v *= self.dt_
+		self.velocity_ = new_v
 		if(self.i_ > self.n_):
-			self.Stop()
+			self.stop()
 		
