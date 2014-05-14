@@ -16,6 +16,8 @@ class Plot(object):
             self.draw_poly()
 
     def draw_poly(self):
+        self.ax.clear()
+        self.ax.axis([0, 10, 0, 10])
         self.ax.fill(*zip(*self.poly))
         self.poly = []
         self.fig.canvas.draw()
