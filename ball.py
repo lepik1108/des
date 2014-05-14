@@ -1,7 +1,7 @@
 import numpy as np
 
 class OBJ:
-	self.engine_ = None
+	engine_ = None
 	
 	def setEngine(self, engine):
 		self.engine_ = engine
@@ -14,7 +14,7 @@ class OBJ:
 
 class Bal(OBJ):
 	
-	def __init__(self, x, y, velocity = 0, mass = 3
+	def __init__(self, x, y, velocity = 0, mass = 3,
 				 g = 9.8, k1 = 1, k2 = 1,
 				 dt = 1, n = 10):
 		self.x_ = x
