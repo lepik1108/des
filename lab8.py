@@ -1,3 +1,4 @@
+import ball
 import matplotlib.pyplot as plt
 
 class Plot(object):
