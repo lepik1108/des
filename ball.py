@@ -12,7 +12,6 @@ class OBJ:
 	def array():
 		return None
 
-
 class Bal(OBJ):
 	
 	def __init__(self, x, y, velocity = 0, mass = 3
